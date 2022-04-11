@@ -6,34 +6,43 @@ import java.util.regex.Pattern;
 
 public class JerksonParser {
     //public String data;
-    public List<String> groceryList = new ArrayList<>();
+    public String groceryList;
     public List<String> groceryList1 = new ArrayList<>();
 
 
 
-    public List<String> getGroceries(String input) {
-        Pattern pattern = Pattern.compile("name.*?[#*$]", Pattern.CASE_INSENSITIVE);
+    public String getGroceries(String input) {
+        StringBuilder str = new StringBuilder();
+        Pattern pattern = Pattern.compile("[a-z][A-Z] && [:] && [;]", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(input);
         while(matcher.find()) {
-            groceryList.add(matcher.group());
+            str.append(matcher.group());
         }
-        System.out.println(groceryList);
-        for (String s: groceryList
-             ) {
-            System.out.println(s);
-        }
-        return groceryList;
+
+        System.out.println(str);
+        groceryList = str.toString();
+        return String.valueOf(str);
 
     }
-    public List<String> getKeysAndValues(List<String> input){
-        Pattern pattern = Pattern.compile("(.name.*?[;|,|.|:|@]) || (.price.*?[;|,|.|:|@]) || (.type.*?[;|,|.|:|@]) || (.expiration.*?[;|,|.|:|@])");
-        for (String s: input) {
-            Matcher matcher = pattern.matcher(s);
-            while (matcher.find()){
-                groceryList1.add(matcher.group());
+    public String removeSemis(String input){
+        StringBuilder str = new StringBuilder();
+        Pattern pattern2 = Pattern.compile(";");
+        Matcher matcher2 = pattern2.matcher(groceryList);
+        while (matcher2.find()) {
+            matcher2.replaceAll(":");
+            str.append(matcher2.group());
         }
-        }
-        System.out.println(groceryList1);
-        return groceryList1;
+        System.out.println(str);
+        return String.valueOf(str);
     }
-}
+//    public String getKeysAndValues(List<String> input){
+//        Pattern pattern = Pattern.compile("(name.*?[;|%|*|@|^]) || (price.*?[;|%|*|@|^]) || (type.*?[;|%|*|@|^]) || (expiration.*?[;|%|*|@|^])", Pattern.CASE_INSENSITIVE);
+//            Matcher matcher = pattern.matcher(input.toString());
+//            while (matcher.find()){
+//                groceryList1.add(matcher.group());
+//        }System.out.println(groceryList1);
+//        return groceryList1;
+//        }
+
+    }
+//

@@ -3,8 +3,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class Main {
-    static List<String> groceryList;
-    static List<String> groceryList1;
+    static String groceryList;
+    static String groceryList1;
     public String readRawDataToString() throws Exception{
 
         ClassLoader classLoader = getClass().getClassLoader();
@@ -18,7 +18,8 @@ public class Main {
 
         JerksonParser jerksonParser = new JerksonParser();
         groceryList = jerksonParser.getGroceries(output);
-        groceryList1 = jerksonParser.getKeysAndValues(groceryList);
+        jerksonParser.removeSemis(groceryList);
+        //groceryList1 = jerksonParser.getKeysAndValues(groceryList);
 
     }
 
