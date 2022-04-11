@@ -2,11 +2,11 @@ import java.util.Objects;
 
 public class Grocery {
     private String name;
-    private int price;
+    private String price;
     private String type;
     private String date;
 
-    public Grocery(String name, int price, String type, String date) {
+    public Grocery(String name, String price, String type, String date) {
         this.name = name;
         this.price = price;
         this.type = type;
@@ -21,11 +21,11 @@ public class Grocery {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
