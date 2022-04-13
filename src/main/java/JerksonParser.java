@@ -23,9 +23,9 @@ public class JerksonParser {
 
         public String getNameKey(String input) {
         String nameParse = "";
-                Pattern pattern = Pattern.compile("(?=name[:]).*?(?=[:])");
+                Pattern pattern = Pattern.compile("(?=name[:]).*?(?=[:])", Pattern.CASE_INSENSITIVE);
                 Matcher matcher = pattern.matcher(input);
-                if (matcher.find()) {
+                while (matcher.find()) {
                     nameParse += matcher.group();
                 }
             System.out.println(nameParse);

@@ -13,10 +13,17 @@ JerksonParser jerksonParser = new JerksonParser();
 
     }
 
-    public void testGetGroceries() {
+    public void testGetFirstParse() {
         String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
         String expected = "naMe:;price:3.23;type:Foodexpiration:1/04/2016";
-        String modified = String.valueOf(jerksonParser.getFirstParse(original));
-        Assert.assertEquals(expected, modified);
+        String actual = String.valueOf(jerksonParser.getFirstParse(original));
+        Assert.assertEquals(expected, actual);
+    }
+
+    public void testGetNameKey() {
+        String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
+        String expected = "naMe";
+        String actual = jerksonParser.getNameKey(original);
+        Assert.assertEquals(expected, actual);
     }
 }
