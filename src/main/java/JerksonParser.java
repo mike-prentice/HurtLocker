@@ -31,5 +31,16 @@ public class JerksonParser {
             System.out.println(nameParse);
             return nameParse;
         }
+
+    public String getNameValue(String input) {
+        String nameValueParse = "";
+        Pattern pattern = Pattern.compile("(?<=name[:]).*?(?=[;])", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(input);
+        while (matcher.find()) {
+            nameValueParse += matcher.group();
+        }
+        System.out.println(nameValueParse);
+        return nameValueParse;
+    }
     }
 //(?<=name[:]).*?(?=[;])

@@ -6,6 +6,7 @@ import java.util.List;
 public class Main {
     static String firstParse = "";
     static String getNameString = "";
+    static String getNameValue = "";
     public String readRawDataToString() throws Exception{
 
         ClassLoader classLoader = getClass().getClassLoader();
@@ -20,7 +21,9 @@ public class Main {
         JerksonParser jerksonParser = new JerksonParser();
         firstParse = jerksonParser.getFirstParse(output);
         getNameString = jerksonParser.getNameKey(firstParse);
+        getNameValue = jerksonParser.getNameValue(firstParse);
         System.out.println(getNameString);
+        System.out.println(getNameValue);
 
 
     }
