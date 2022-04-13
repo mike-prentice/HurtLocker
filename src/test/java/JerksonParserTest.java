@@ -15,8 +15,8 @@ JerksonParser jerksonParser = new JerksonParser();
 
     public void testGetGroceries() {
         String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
-        String expected = "[naMe:;price:3.23;type:Food, expiration:1/04/2016]";
-        String modified = String.valueOf(jerksonParser.getGroceries(original));
+        String expected = "naMe:;price:3.23;type:Foodexpiration:1/04/2016";
+        String modified = String.valueOf(jerksonParser.getFirstParse(original));
         Assert.assertEquals(expected, modified);
     }
 }

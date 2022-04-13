@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    static List<String> groceryList = new ArrayList<>();
+    static String firstParse = "";
+    static String getNameString = "";
     public String readRawDataToString() throws Exception{
 
         ClassLoader classLoader = getClass().getClassLoader();
@@ -14,11 +15,12 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
-        //System.out.println(output);
+
 
         JerksonParser jerksonParser = new JerksonParser();
-        groceryList = jerksonParser.getGroceries(output);
-        //jerksonParser.getKeys(groceryList);
+        firstParse = jerksonParser.getFirstParse(output);
+        getNameString = jerksonParser.getNameKey(firstParse);
+        System.out.println(getNameString);
 
 
     }
