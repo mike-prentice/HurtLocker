@@ -16,14 +16,14 @@ JerksonParser jerksonParser = new JerksonParser();
     public void testGetNameKey() {
         String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
         String expected = "naMe";
-        String actual = jerksonParser.getNameKey(original);
+        String actual = jerksonParser.getKey(original, jerksonParser.findName);
         Assert.assertEquals(expected, actual);
     }
 
     public void testGetNameValue() {
         String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
         String expected = "";
-        String actual = jerksonParser.getNameValue(original);
+        String actual = jerksonParser.getValue(original);
         Assert.assertEquals(expected, actual);
     }
 }

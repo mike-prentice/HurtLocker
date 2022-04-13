@@ -5,8 +5,10 @@ import java.util.List;
 
 public class Main {
     static String firstParse = "";
-    static String getNameString = "";
     static String getNameValue = "";
+    static String keys = "";
+    static String values = "";
+    static String regEx = "";
     public String readRawDataToString() throws Exception{
 
         ClassLoader classLoader = getClass().getClassLoader();
@@ -18,12 +20,13 @@ public class Main {
         String output = (new Main()).readRawDataToString();
 
 
-        JerksonParser jerksonParser = new JerksonParser();
-        firstParse = jerksonParser.getFirstParse(output);
-        getNameString = jerksonParser.getNameKey(firstParse);
-        getNameValue = jerksonParser.getNameValue(firstParse);
-        System.out.println(getNameString);
-        System.out.println(getNameValue);
+        JerksonParser jerkParse = new JerksonParser();
+        firstParse = jerkParse.getFirstParse(output);
+        values = jerkParse.getAllValues(firstParse, regEx);
+        keys = jerkParse.getAllKeys(firstParse, regEx);
+        getNameValue = jerkParse.getValue(firstParse);
+        System.out.println(keys);
+        System.out.println(values);
 
 
     }
