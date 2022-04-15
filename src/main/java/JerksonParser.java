@@ -32,8 +32,6 @@ public class JerksonParser {
         while(matcher.find()) {
             firstParse += matcher.group();
         }
-        //System.out.println(firstParse);
-
         return firstParse;
     }
 
@@ -50,7 +48,6 @@ public class JerksonParser {
                 getKey(input, findName);
             }
         }
-        //System.out.println(keys);
         return keys;
     }
 
@@ -67,7 +64,6 @@ public class JerksonParser {
                nameValue = getValue(input, findNameValue);
             }
         }
-        //System.out.println(values);
         return values;
     }
 
@@ -78,8 +74,6 @@ public class JerksonParser {
                 while (matcher.find()) {
                     keys += matcher.group();
                 }
-
-            //System.out.println(keys);
             return keys;
         }
 
@@ -90,7 +84,6 @@ public class JerksonParser {
         while (matcher.find()) {
             values.add(matcher.group());
         }
-        //System.out.println(values);
         return values;
     }
     public List<Grocery> buildGroceries(){

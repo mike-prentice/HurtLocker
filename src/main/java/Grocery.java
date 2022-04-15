@@ -13,6 +13,9 @@ public class Grocery {
         this.date = date;
     }
 
+    public Grocery() {
+    }
+
     public String getName() {
         return name;
     }
