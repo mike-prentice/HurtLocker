@@ -66,11 +66,13 @@ public class JerksonParser {
         return groceriesList;
     }
 
-    public String getOutput(){
+    public String getOutput(List<Grocery> groceryList) throws Exception{
         for (Grocery s: groceriesList
              ) {
             if(s.getPrice().equals("") || s.getName().equals("")){
                 errorCount++;
+                System.out.println(errorCount);
+                throw new Exception();
             }
         }
         return null;

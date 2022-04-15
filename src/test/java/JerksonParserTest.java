@@ -38,12 +38,16 @@ JerksonParser jerksonParser = new JerksonParser();
         Assert.assertEquals(expected, actual);
     }
 
-    public void getOutputTest(){
-        Grocery grocery = new Grocery();
-        grocery.setName("");
-        grocery.setPrice("3.23");
-        grocery.setType("Food");
-        grocery.setDate("1/04/2016");
-        //grocery.getOutput();
-    }
+
+    public void testGetOutput() throws Exception {
+
+            List<Grocery> groceryList = new ArrayList<>();
+            Grocery grocery = new Grocery();
+            grocery.setName("");
+            grocery.setPrice("3.23");
+            grocery.setType("Food");
+            grocery.setDate("1/04/2016");
+            groceryList.add(grocery);
+            jerksonParser.getOutput(groceryList);
+        }
 }
