@@ -11,8 +11,8 @@ public class JerksonParser {
     String findExpiration = "(?=expiration[:]).*?(?=[:])";
     String findNameValue = "(?<=name[:]).*?(?=[;])";
     String findPriceValue = "(?<=price[:]).*?(?=[;])";
-    String findTypeValue = "(?<=type[:]).*?(?=[;])";
-    String findExpirationValue = "(?<=expiration[:]).*?(?=[;])";
+    String findTypeValue = "(?<=type[:]).*?(?=[;e])";
+    String findExpirationValue = "(?<=expiration[:]).*?(?=n)";
 
 
 
@@ -43,7 +43,7 @@ public class JerksonParser {
                 getKey(input, findName);
             }
         }
-        //System.out.println(output);
+        //System.out.println(keys);
         return keys;
     }
 
@@ -60,7 +60,7 @@ public class JerksonParser {
                 getKey(input, findNameValue);
             }
         }
-        //System.out.println(output);
+        //System.out.println(values);
         return values;
     }
 
@@ -72,18 +72,18 @@ public class JerksonParser {
                     keys += matcher.group();
                 }
 
-            System.out.println(keys);
+            //System.out.println(keys);
             return keys;
         }
 
-    public String getValue(String input) {
-        String values = "";
-        Pattern pattern = Pattern.compile("(?<=name[:]).*?(?=[;])", Pattern.CASE_INSENSITIVE);
+    public List<String> getValue(String input, String regEx) {
+        List<String> values = new ArrayList<>();
+        Pattern pattern = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(input);
         while (matcher.find()) {
-            values += matcher.group();
+            values.add(matcher.group());
         }
-        System.out.println(values);
+        //System.out.println(values);
         return values;
     }
     }

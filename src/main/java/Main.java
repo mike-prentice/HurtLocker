@@ -6,8 +6,9 @@ import java.util.List;
 public class Main {
     static String firstParse = "";
     static String getNameValue = "";
+    static String getValues = "";
     static String keys = "";
-    static String values = "";
+    static List<String> values = new ArrayList<>();
     static String regEx = "";
     public String readRawDataToString() throws Exception{
 
@@ -22,11 +23,14 @@ public class Main {
 
         JerksonParser jerkParse = new JerksonParser();
         firstParse = jerkParse.getFirstParse(output);
-        values = jerkParse.getAllValues(firstParse, regEx);
-        keys = jerkParse.getAllKeys(firstParse, regEx);
-        getNameValue = jerkParse.getValue(firstParse);
-        System.out.println(keys);
-        System.out.println(values);
+        //values = jerkParse.getAllValues(firstParse, regEx);
+        //keys = jerkParse.getAllKeys(firstParse, regEx);
+        //getNameValue = jerkParse.getKey(firstParse, jerkParse.findName);
+        //getValues = jerkParse.getValue(firstParse, jerkParse.findExpirationValue);
+        values = jerkParse.getValue(firstParse, jerkParse.findPriceValue);
+        System.out.println(getNameValue);
+        System.out.println(getValues);
+        System.out.println(values.toString());
 
 
     }
