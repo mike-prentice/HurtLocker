@@ -57,4 +57,14 @@ public class Grocery {
     public int hashCode() {
         return Objects.hash(name, price, type, date);
     }
+
+    @Override
+    public String toString() {
+        return "Grocery{" +
+                "name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", type='" + type + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }

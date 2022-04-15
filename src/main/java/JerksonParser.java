@@ -13,6 +13,13 @@ public class JerksonParser {
     String findPriceValue = "(?<=price[:]).*?(?=[;])";
     String findTypeValue = "(?<=type[:]).*?(?=[;e])";
     String findExpirationValue = "(?<=expiration[:]).*?(?=n)";
+    List<String> nameValue = new ArrayList<>();
+    List<String> priceValue = new ArrayList<>();
+    List<String> typeValue = new ArrayList<>();
+    List<String> expirationValue = new ArrayList<>();
+    List<Grocery> groceriesList = new ArrayList<>();
+
+
 
 
 
@@ -47,17 +54,17 @@ public class JerksonParser {
         return keys;
     }
 
-    public String getAllValues(String input, String regEx){
-        String values = "";
+    public List<String> getAllValues(String input){
+        List<String> values = new ArrayList<>();
         for (int i = 0; i <= 3; i++) {
             if(i == 0){
-                getKey(input, findPriceValue);
+              priceValue =  getValue(input, findPriceValue);
             } else if (i == 1){
-                getKey(input, findTypeValue);
+               typeValue =  getValue(input, findTypeValue);
             } else if (i == 2){
-                getKey(input, findExpirationValue);
+                expirationValue = getValue(input, findExpirationValue);
             } else if (i == 3) {
-                getKey(input, findNameValue);
+               nameValue = getValue(input, findNameValue);
             }
         }
         //System.out.println(values);
@@ -85,5 +92,14 @@ public class JerksonParser {
         }
         //System.out.println(values);
         return values;
+    }
+    public List<Grocery> buildGroceries(){
+        for (int i = 0; i < expirationValue.size(); i++) {
+            Grocery grocery = new Grocery(nameValue.get(i), priceValue.get(i), typeValue.get(i), expirationValue.get(i));
+            groceriesList.add(grocery);
+            System.out.println(grocery);
+        }
+
+        return groceriesList;
     }
     }

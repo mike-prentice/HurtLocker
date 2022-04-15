@@ -27,10 +27,11 @@ public class Main {
         //keys = jerkParse.getAllKeys(firstParse, regEx);
         //getNameValue = jerkParse.getKey(firstParse, jerkParse.findName);
         //getValues = jerkParse.getValue(firstParse, jerkParse.findExpirationValue);
-        values = jerkParse.getValue(firstParse, jerkParse.findPriceValue);
+        values = jerkParse.getAllValues(firstParse);
         System.out.println(getNameValue);
         System.out.println(getValues);
         System.out.println(values.toString());
+        jerkParse.buildGroceries();
 
 
     }
