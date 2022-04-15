@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 
 public class JerksonParser {
-    String findName = "(?=name[:]).*?(?=[:])";
-    String findPrice = "(?=price[:]).*?(?=[:])";
-    String findType = "(?=type[:]).*?(?=[:])";
-    String findExpiration = "(?=expiration[:]).*?(?=[:])";
+//    String findName = "(?=name[:]).*?(?=[:])";
+//    String findPrice = "(?=price[:]).*?(?=[:])";
+//    String findType = "(?=type[:]).*?(?=[:])";
+//    String findExpiration = "(?=expiration[:]).*?(?=[:])";
     String findNameValue = "(?<=name[:]).*?(?=[;])";
     String findPriceValue = "(?<=price[:]).*?(?=[;])";
     String findTypeValue = "(?<=type[:]).*?(?=[;e])";
@@ -18,11 +18,7 @@ public class JerksonParser {
     List<String> typeValue = new ArrayList<>();
     List<String> expirationValue = new ArrayList<>();
     List<Grocery> groceriesList = new ArrayList<>();
-
-
-
-
-
+    int errorCount;
 
 
     public String getFirstParse(String input) {
@@ -33,22 +29,6 @@ public class JerksonParser {
             firstParse += matcher.group();
         }
         return firstParse;
-    }
-
-    public String getAllKeys(String input, String regEx){
-        String keys = "";
-        for (int i = 0; i <= 3; i++) {
-            if(i == 0){
-                getKey(input, findPrice);
-            } else if (i == 1){
-                getKey(input, findType);
-            } else if (i == 2){
-                getKey(input, findExpiration);
-            } else if (i == 3) {
-                getKey(input, findName);
-            }
-        }
-        return keys;
     }
 
     public List<String> getAllValues(String input){
@@ -66,16 +46,6 @@ public class JerksonParser {
         }
         return values;
     }
-
-        public String getKey(String input, String regEx) {
-        String keys = "";
-                Pattern pattern = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
-                Matcher matcher = pattern.matcher(input);
-                while (matcher.find()) {
-                    keys += matcher.group();
-                }
-            return keys;
-        }
 
     public List<String> getValue(String input, String regEx) {
         List<String> values = new ArrayList<>();
@@ -95,4 +65,44 @@ public class JerksonParser {
 
         return groceriesList;
     }
+
+    public String getOutput(){
+        for (Grocery s: groceriesList
+             ) {
+            if(s.getPrice().equals("") || s.getName().equals("")){
+                errorCount++;
+            }
+        }
+        return null;
     }
+
+    }
+
+
+
+//        public String getKey(String input, String regEx) {
+//        String keys = "";
+//                Pattern pattern = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
+//                Matcher matcher = pattern.matcher(input);
+//                while (matcher.find()) {
+//                    keys += matcher.group();
+//                }
+//            return keys;
+//        }
+
+
+//    public String getAllKeys(String input, String regEx){
+//        String keys = "";
+//        for (int i = 0; i <= 3; i++) {
+//            if(i == 0){
+//                getKey(input, findPrice);
+//            } else if (i == 1){
+//                getKey(input, findType);
+//            } else if (i == 2){
+//                getKey(input, findExpiration);
+//            } else if (i == 3) {
+//                getKey(input, findName);
+//            }
+//        }
+//        return keys;
+//    }

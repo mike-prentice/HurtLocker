@@ -16,12 +16,12 @@ JerksonParser jerksonParser = new JerksonParser();
         Assert.assertEquals(expected, actual);
     }
 
-    public void testGetNameKey() {
-        String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
-        String expected = "naMe";
-        String actual = jerksonParser.getKey(original, jerksonParser.findName);
-        Assert.assertEquals(expected, actual);
-    }
+//    public void testGetNameKey() {
+//        String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
+//        String expected = "naMe";
+//        String actual = jerksonParser.getKey(original, jerksonParser.findName);
+//        Assert.assertEquals(expected, actual);
+//    }
 
     public void testGetNameValue() {
         String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
@@ -35,7 +35,15 @@ JerksonParser jerksonParser = new JerksonParser();
         String original = "naMe:;price:3.23;type:Food^expiration:1/04/2016##";
         List<String> expected = Collections.singletonList("Food^");
         List<String> actual = jerksonParser.getValue(original, jerksonParser.findTypeValue);
-        //System.out.println(actual);
         Assert.assertEquals(expected, actual);
+    }
+
+    public void getOutputTest(){
+        Grocery grocery = new Grocery();
+        grocery.setName("");
+        grocery.setPrice("3.23");
+        grocery.setType("Food");
+        grocery.setDate("1/04/2016");
+        //grocery.getOutput();
     }
 }
